@@ -1,8 +1,50 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    initNavigation();
     initPhoneStage();
     initCopyEmail();
 });
+
+// Mobile Navigation Toggle
+function initNavigation() {
+    const root = document.documentElement;
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.site-nav');
+    const backdrop = document.querySelector('.nav-backdrop');
+
+    if (!hamburger || !nav) return;
+
+    function setOpen(open) {
+        root.classList.toggle('nav-open', open);
+        hamburger.setAttribute('aria-expanded', open);
+        hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    hamburger.addEventListener('click', () => {
+        setOpen(!root.classList.contains('nav-open'));
+    });
+
+    // Close the sidebar when a link or the backdrop is clicked
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    if (backdrop) {
+        backdrop.addEventListener('click', () => setOpen(false));
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && root.classList.contains('nav-open')) {
+            setOpen(false);
+            hamburger.focus();
+        }
+    });
+
+    // Leaving mobile width closes it
+    window.matchMedia('(min-width: 769px)').addEventListener('change', (e) => {
+        if (e.matches) setOpen(false);
+    });
+}
 
 // Sticky phone: mirrors whichever project is at the middle of the viewport
 function initPhoneStage() {

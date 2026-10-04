@@ -34,13 +34,20 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="#top">Pramod Timilsina</a>
-            <nav aria-label="Main">
+            <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Main">
                 <ul class="nav-links">
+                    <li><a href="#top">Home</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <div class="nav-backdrop"></div>
         </div>
     </header>
 
