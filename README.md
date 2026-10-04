@@ -13,7 +13,7 @@ python -m http.server 8000
 ## How it is put together
 
 - `index.html` – all content. Each project is an `<article class="project">` in the Work section.
-- `css/styles.css` – colours and fonts are CSS variables at the top of the file. Each app has its own `--tint` colour (`.app-weather`, `.app-movies`, ...).
+- `css/styles.css` – colours and fonts are CSS variables at the top of the file. Each app has its own `--tint` colour (`.app-foodieho`, `.app-erara`, `.app-weather`).
 - `js/script.js` – copies each project's phone screen into the sticky phone and swaps it as you scroll, plus the "Copy address" button.
 
 ### The phone
